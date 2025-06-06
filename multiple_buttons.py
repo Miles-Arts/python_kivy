@@ -16,15 +16,20 @@ class HBoxLayoutExample(App):
     def build(self):
         layout =  BoxLayout(padding=10)
         
-        
         for i in range(5):
             btn=Button(text=f"Button #{i+1}",
                        background_color=random.choice(colors)
             )
             
+            btn.index = i+1   
+            btn.bind(on_press=self.on_press_button) 
+                    
             layout.add_widget(btn)
             
         return layout    
+    
+    def on_press_button(self, instance):
+        print(f"Presiona Botón #{instance.index}")
 
 if __name__ == '__main__':
     app = HBoxLayoutExample()
